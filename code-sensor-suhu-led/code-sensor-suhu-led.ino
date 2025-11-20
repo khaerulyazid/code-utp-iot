@@ -14,7 +14,6 @@ ESP8266WebServer server(80);
 
 DHT dht(DHTPIN, DHTTYPE);
 
-// Handler root
 void handleRoot() {
   server.send(200, "text/plain", "Server OK");
 }
