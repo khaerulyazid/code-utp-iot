@@ -4,9 +4,7 @@
 
 #define DHTPIN 14      
 #define DHTTYPE DHT22  
-
-#define LEDPIN 4       
-
+    
 const char* ssid = "ESP8266_UTP";
 const char* password = "12345678"; 
 
@@ -16,16 +14,6 @@ DHT dht(DHTPIN, DHTTYPE);
 
 void handleRoot() {
   server.send(200, "text/plain", "Server OK");
-}
-
-void handleLedOn() {
-  digitalWrite(LEDPIN, HIGH);
-  server.send(200, "text/plain", "LED NYALA");
-}
-
-void handleLedOff() {
-  digitalWrite(LEDPIN, LOW);
-  server.send(200, "text/plain", "LED MATI");
 }
 
 void handleSensorData() {  
@@ -50,9 +38,6 @@ void setup() {
 
   WiFi.softAP(ssid, password);
   Serial.println("AP Start");
-
-  server.on("/ledon", handleLedOnn);
-  server.on("/ledoff", handleLedOff);
 
   server.on("/sensor", handleSensorDataa);
 
